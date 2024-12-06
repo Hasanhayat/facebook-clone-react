@@ -12,6 +12,7 @@ nav {
   display: flex;
   justify-content: space-between;
   background-color: #ffffff;
+  position: fixed;
 }
 .n1 {
   display: flex;
@@ -71,6 +72,9 @@ main {
   flex-direction: row;
   align-content: center;
   justify-content: center;
+  position: relative;
+  top: 60px;
+  z-index: -1;
 }
 main section {
   flex: 1;
@@ -86,7 +90,6 @@ main section {
   margin: 10px;
   background-color: #ffffff;
   border-radius: 10px;
-  /* width: 500px; */
 }
 .feed input {
   background-color: #f0f2f5;
@@ -101,6 +104,7 @@ main section {
 }
 .feed-upper img {
   border-radius: 50%;
+  cursor: pointer;
 }
 .feed-upper {
   display: flex;
@@ -152,6 +156,7 @@ main section {
   border-radius: 50%;
   height: 40px;
   width: 40px;
+  cursor: pointer;
 }
 .left h3{
   font-size: 15px;
@@ -169,12 +174,11 @@ main section {
 .right{
   display: flex;
   gap: 10px;
-
+  cursor: pointer;
 }
 .right svg{
   height: 25px;
   width: 25px;
-  cursor: pointer;
 }
 .card>img{
   height: 360px;
