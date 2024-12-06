@@ -111,7 +111,7 @@ main section {
   display: flex;
   align-items: center;
   gap: 5px;
-  justify-content: center;
+  justify-content: space-around;
   gap: 15px;
 }
 .feed-lower div {
@@ -178,7 +178,7 @@ main section {
 }
 .card>img{
   height: 360px;
-  width: 500px;
+  width: 100%;
   margin-top: 5px;
 }
 .card-lower{
