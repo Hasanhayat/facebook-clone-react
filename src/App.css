@@ -132,71 +132,79 @@ main section {
   color: #717272;
   font-weight: 600;
 }
-.card{
+.card {
   display: flex;
   flex-direction: column;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 10px;
   margin: 10px;
 }
-.card-upper{
+.card > p {
+  font-size: 15px;
+  margin: 0;
+  margin-left: 10px;
+  font-weight: 500;
+  color: #080809;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.card-upper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px;
 }
-.left{
+.left {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 7px;
   cursor: pointer;
 }
-.left img{
+.left img {
   border-radius: 50%;
   height: 40px;
   width: 40px;
   cursor: pointer;
 }
-.left h3{
+.left h3 {
   font-size: 15px;
   margin: 0;
 }
-.left p{
+.left p {
   font-size: 13px;
   margin: 0;
 }
-.left span{
+.left span {
   display: flex;
   flex-direction: column;
   gap: 5px;
 }
-.right{
+.right {
   display: flex;
   gap: 10px;
   cursor: pointer;
 }
-.right svg{
+.right svg {
   height: 25px;
   width: 25px;
 }
-.card>img{
+.card > img {
   height: 360px;
   width: 100%;
   margin-top: 5px;
 }
-.card-lower{
+.card-lower {
   display: flex;
   justify-content: space-around;
 }
-.card-lower div{
+.card-lower div {
   display: flex;
   gap: 5px;
   align-items: center;
   justify-content: center;
   cursor: pointer;
 }
-.card-lower svg{
+.card-lower svg {
   height: 20px;
   width: 20px;
 }
