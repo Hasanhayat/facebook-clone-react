@@ -1,7 +1,51 @@
 import "./App.css";
 import Card from "./components/card";
+import axios from 'axios';
+
 
 function App() {
+  function getLastMonthDates() {
+    const now = new Date();
+    const lastMonth = new Date(now.setMonth(now.getMonth() - 1));
+  
+    const firstDay = new Date(lastMonth.getFullYear(), lastMonth.getMonth(), 1);
+    const lastDay = new Date(lastMonth.getFullYear(), lastMonth.getMonth() + 1, 0);
+  
+    return {
+      from: firstDay.toISOString().split('T')[0], // Date in YYYY-MM-DD format
+      to: lastDay.toISOString().split('T')[0]    // Date in YYYY-MM-DD format
+    };
+  }
+  
+  const { from, to } = getLastMonthDates();
+  
+
+
+
+  const getNewsAxios = async () => {
+    const apiKey = '0f8f9cd38d9f4ecaa00ccd52c90adee5';
+    const url = `https://api.worldnewsapi.com/search-news?text=Pakistan&api-key=${apiKey}`;
+  
+    try {
+      const response = await axios.get(
+        "https://api.worldnewsapi.com/search-news",
+        {
+          params: {
+            "source-country": "pk", // Pakistan-specific news
+            q: "facebook",          // Filter for Facebook trends
+            "api-key": apiKey,     // Your API key
+            "pageSize": 50,         // Request up to 50 news articles
+          "page": 1
+          },
+        }
+      );
+            console.log(response.data.news);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  
+  getNewsAxios();
   return (
     <div className="App">
       <nav>
