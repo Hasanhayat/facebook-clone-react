@@ -209,14 +209,13 @@ main section {
   width: 20px;
 }
 
-
 @media only screen and (max-width: 840px) {
-  .n2{
+  .n2 {
     display: none;
   }
 }
 @media only screen and (max-width: 560px) {
-  .n3 svg{
+  .n3 svg {
     display: none;
   }
 }

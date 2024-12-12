@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 function App() {
   const [newsData, setNewsData] = useState([]);
   const getNewsAxios = async () => {
-    const apiKey = "ub_62185e8c975edf52bd85ce63fbbda35fdab46";
+    const apiKey = "pub_62185e8c975edf52bd85ce63fbbda35fdab46";
     const url = `https://newsdata.io/api/1/news`;
 
     try {
