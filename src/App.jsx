@@ -1,75 +1,34 @@
 import "./App.css";
 import Card from "./components/card";
-import axios from 'axios';
-import { useState , useEffect} from 'react';
-
-
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 function App() {
   const [newsData, setNewsData] = useState([]);
   const getNewsAxios = async () => {
-    const apiKey = 'pub_62185e8c975edf52bd85ce63fbbda35fdab46';
+    const apiKey = "ub_62185e8c975edf52bd85ce63fbbda35fdab46";
     const url = `https://newsdata.io/api/1/news`;
 
     try {
       const response = await axios.get(url, {
         params: {
-          apikey: apiKey,  // Your API Key
-          q: 'Facebook',   // Search query for Facebook-related news
-          country: 'PK',    // Fetch news for Pakistan
-          language: 'en',   // English 
-          
+          apikey: apiKey, // Your API Key
+          q: "Facebook", // Search query for Facebook-related news
+          country: "PK", // Fetch news for Pakistan
+          language: "en", // English
         },
       });
-      // console.log(response.data.results);
-        setNewsData(response.data.results)
-        console.log(newsData);
-    
-
+      setNewsData(response.data.results);
+      console.log(newsData);
     } catch (error) {
-      console.error('Error fetching the news:', error);
+      console.error("Error fetching the news:", error);
     }
+  };
 
+  useEffect(() => {
+    getNewsAxios(); // Call the async function to fetch news when component mounts
+  }, []); // Empty array means this will only run once when the component mounts
 
-// const results = [
-//   {
-//     article_id: "ae703d1503f64ab60694659050210fbc",
-//     title: "Deutsche Handballerinnen brauchen Wunder für EM-Halbfinale",
-//     link: "https://www.wn.de/sport/weltsport/handball/deutsche-handballerinnen-brauchen-wunder-fuer-em-halbfinale-3205835",
-//     description: "Durch die Niederlage gegen Dänemark haben die deutschen Handballerinnen keine realistische Chance mehr auf das EM-Halbfinale. Theoretisch ist das Ziel aber noch erreichbar.",
-//     content: "Für die deutschen Handballerinnen wird sich der Traum von der ersten EM-Medaille seit 30 Jahren bei der Endrunde in Österreich mit größter Wahrscheinlichkeit nicht erfüllen...",
-//     pubDate: "2024-12-08 04:49:10",
-//     image_url: "https://asc-images.forward-publishing.io/2024/12/08/ab39f5de-5f2b-4a9c-bd69-af617ae202b1.jpeg?auto=compress%2Cformat&rect=0%2C0%2C2048%2C1365&w=1024",
-//     source_name: "Westfälische Nachrichten",
-//     source_url: "https://www.wn.de",
-//     source_icon: "https://i.bytvi.com/domain_icons/wn.png",
-//     language: "german",
-//     country: ["germany"],
-//     category: ["top"],
-//     ai_tag: ["sports"],
-//     sentiment: "neutral",
-//     sentiment_stats: {
-//       positive: 0.08,
-//       neutral: 99.81,
-//       negative: 0.11
-//     },
-//     duplicate: false
-//   },
-//   // Add more objects for additional news articles
-// ];
-// setNewsData(results);
-};
-
-  console.log(newsData);
-  
-  
-useEffect(() => {
-  getNewsAxios();  // Call the async function to fetch news when component mounts
-}, []);  // Empty array means this will only run once when the component mounts
-
-
-
-        
   return (
     <div className="App">
       <nav>
@@ -98,8 +57,8 @@ useEffect(() => {
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <path d="M256.6 8C116.5 8 8 110.3 8 248.6c0 72.3 29.7 134.8 78.1 177.9 8.4 7.5 6.6 11.9 8.1 58.2A19.9 19.9 0 0 0 122 502.3c52.9-23.3 53.6-25.1 62.6-22.7C337.9 521.8 504 423.7 504 248.6 504 110.3 396.6 8 256.6 8zm149.2 185.1l-73 115.6a37.4 37.4 0 0 1 -53.9 9.9l-58.1-43.5a15 15 0 0 0 -18 0l-78.4 59.4c-10.5 7.9-24.2-4.6-17.1-15.7l73-115.6a37.4 37.4 0 0 1 53.9-9.9l58.1 43.5a15 15 0 0 0 18 0l78.4-59.4c10.4-8 24.1 4.5 17.1 15.6z" />
           </svg>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-            <path d="M256.6 8C116.5 8 8 110.3 8 248.6c0 72.3 29.7 134.8 78.1 177.9 8.4 7.5 6.6 11.9 8.1 58.2A19.9 19.9 0 0 0 122 502.3c52.9-23.3 53.6-25.1 62.6-22.7C337.9 521.8 504 423.7 504 248.6 504 110.3 396.6 8 256.6 8zm149.2 185.1l-73 115.6a37.4 37.4 0 0 1 -53.9 9.9l-58.1-43.5a15 15 0 0 0 -18 0l-78.4 59.4c-10.5 7.9-24.2-4.6-17.1-15.7l73-115.6a37.4 37.4 0 0 1 53.9-9.9l58.1 43.5a15 15 0 0 0 18 0l78.4-59.4c10.4-8 24.1 4.5 17.1 15.6z" />
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path d="M224 0c-17.7 0-32 14.3-32 32l0 19.2C119 66 64 130.6 64 208l0 18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416l384 0c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8l0-18.8c0-77.4-55-142-128-156.8L256 32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3l-64 0-64 0c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z" />
           </svg>
           <img
             src="https://scontent.fkhi11-2.fna.fbcdn.net/v/t39.30808-1/342978364_622242483130993_9056895196736346721_n.jpg?stp=cp0_dst-jpg_s40x40&_nc_cat=104&ccb=1-7&_nc_sid=0ecb9b&_nc_eui2=AeF_8jsdLcw53dbOIA2LkytGgQHoy2Mwt6OBAejLYzC3o1wx1wQbs8T4MfYw63Z-19zx3tQQTm8nGrKOfggmglKX&_nc_ohc=NWq0bJkAxAEQ7kNvgGIsURI&_nc_zt=24&_nc_ht=scontent.fkhi11-2.fna&_nc_gid=Ak2PAshaFM4sjxwM_dpbeq9&oh=00_AYA_QGwF2V8EvNg9eRHun_xt-N_6fhCR2_Y5bvoe7yKwXg&oe=6757BCE3"
@@ -143,13 +102,18 @@ useEffect(() => {
               </div>
             </div>
           </div>
-          {
-            newsData?.map((ele,i)=>{
-              return (
-                <Card key={i} heading={ele.source_name} content={ele.title} profileimg={ele.source_icon} img={ele.image_url} time={ele.pubDate}/>
-              )
-            })
-          }
+          {newsData?.map((ele, i) => {
+            return (
+              <Card
+                key={i}
+                heading={ele.source_name}
+                content={ele.title}
+                profileimg={ele.source_icon}
+                img={ele.image_url}
+                time={ele.pubDate}
+              />
+            );
+          })}
         </section>
         <section className="sec2"></section>
       </main>
