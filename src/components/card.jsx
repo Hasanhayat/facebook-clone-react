@@ -19,7 +19,7 @@ const Card = (props) => {
           </svg>
         </div>
       </div>
-      <p>{props.contant}</p>
+      <p>{props.content}</p>
       <img src={props.img} alt="" />
       <div className="card-lower">
         <div className="like">
