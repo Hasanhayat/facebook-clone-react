@@ -4,12 +4,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 function App() {
-  const [newsData, setNewsData] = useState([]
-
-  //   duplicate: false
-  // }
-);
-  const getNewsAxios = async (q ,country) => {
+  const [newsData, setNewsData] = useState([]);
+  const getNewsAxios = async (q, country) => {
     const apiKey = "pub_6218550bd3e1cd69d3aa1b524f530cb81d129";
     const url = `https://newsdata.io/api/1/news`;
 
@@ -23,16 +19,16 @@ function App() {
         },
       });
       let res = response.data.results;
-      setNewsData(prev => [...prev ,...res]);
+      setNewsData((prev) => [...prev, ...res]);
     } catch (error) {
       console.error("Error fetching the news:", error);
     }
   };
 
   useEffect(() => {
-    getNewsAxios("Facebook","PK"); // Call the async function to fetch news when component mounts
-    getNewsAxios("Facebook","AE")
-    getNewsAxios("Facebook","US")
+    getNewsAxios("Facebook", "PK"); // Call the async function to fetch news when component mounts
+    getNewsAxios("Facebook", "AE");
+    getNewsAxios("Facebook", "US");
   }, []); // Empty array means this will only run once when the component mounts
 
   return (
