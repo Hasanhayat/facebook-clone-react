@@ -77,28 +77,11 @@ function App() {
       //     link: "https://www.wn.de/sport/weltsport/handball/deutsche-handballerinnen-brauchen-wunder-fuer-em-halbfinale-3205835",
       //     description: "Durch die Niederlage gegen Dänemark haben die deutschen Handballerinnen keine realistische Chance mehr auf das EM-Halbfinale. Theoretisch ist das Ziel aber noch erreichbar.",
       //     content: "Für die deutschen Handballerinnen wird sich der Traum von der ersten EM-Medaille seit 30 Jahren bei der Endrunde in Österreich mit größter Wahrscheinlichkeit nicht erfüllen...",
-      //     pubDate: "2024-12-08 04:49:10",
-      //     image_url: "https://asc-images.forward-publishing.io/2024/12/08/ab39f5de-5f2b-4a9c-bd69-af617ae202b1.jpeg?auto=compress%2Cformat&rect=0%2C0%2C2048%2C1365&w=1024",
-      //     source_name: "Westfälische Nachrichten",
-      //     source_url: "https://www.wn.de",
-      //     source_icon: "https://i.bytvi.com/domain_icons/wn.png",
-      //     language: "german",
-      //     country: ["germany"],
-      //     category: ["top"],
-      //     ai_tag: ["sports"],
-      //     sentiment: "neutral",
-      //     sentiment_stats: {
-      //       positive: 0.08,
-      //       neutral: 99.81,
-      //       negative: 0.11
-      //     },
-      //     duplicate: false
-      //   },
-      //   // Add more objects for additional news articles
-      // ];
+      
 
 
-      setNewsData(prev => [...prev ,res]);
+
+      setNewsData(prev => [...prev ,...res]);
 
         console.log(newsData);
     } catch (error) {
@@ -108,6 +91,7 @@ function App() {
 
   useEffect(() => {
     getNewsAxios("Facebook","PK"); // Call the async function to fetch news when component mounts
+
     getNewsAxios("Facebook","AE")
     getNewsAxios("Facebook","US")
   }, []); // Empty array means this will only run once when the component mounts
