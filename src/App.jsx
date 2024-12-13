@@ -4,29 +4,113 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 function App() {
-  const [newsData, setNewsData] = useState([]);
-  const getNewsAxios = async () => {
-    const apiKey = "pub_62185e8c975edf52bd85ce63fbbda35fdab46";
+  const [newsData, setNewsData] = useState([]
+  //   {
+  //   article_id: "ae703d1503f64ab60694659050210fbc",
+  //   title: "11111111111111111 Handballerinnen brauchen Wunder für EM-Halbfinale",
+  //   link: "https://www.wn.de/sport/weltsport/handball/deutsche-handballerinnen-brauchen-wunder-fuer-em-halbfinale-3205835",
+  //   description: "Durch die Niederlage gegen Dänemark haben die deutschen Handballerinnen keine realistische Chance mehr auf das EM-Halbfinale. Theoretisch ist das Ziel aber noch erreichbar.",
+  //   content: "Für die deutschen Handballerinnen wird sich der Traum von der ersten EM-Medaille seit 30 Jahren bei der Endrunde in Österreich mit größter Wahrscheinlichkeit nicht erfüllen...",
+  //   pubDate: "2024-12-08 04:49:10",
+  //   image_url: "https://asc-images.forward-publishing.io/2024/12/08/ab39f5de-5f2b-4a9c-bd69-af617ae202b1.jpeg?auto=compress%2Cformat&rect=0%2C0%2C2048%2C1365&w=1024",
+  //   source_name: "Westfälische Nachrichten",
+  //   source_url: "https://www.wn.de",
+  //   source_icon: "https://i.bytvi.com/domain_icons/wn.png",
+  //   language: "german",
+  //   country: ["germany"],
+  //   category: ["top"],
+  //   ai_tag: ["sports"],
+  //   sentiment: "neutral",
+  //   sentiment_stats: {
+  //     positive: 0.08,
+  //     neutral: 99.81,
+  //     negative: 0.11
+  //   },
+  //   duplicate: false
+  // }
+);
+  const getNewsAxios = async (q ,country) => {
+    const apiKey = "pub_6218550bd3e1cd69d3aa1b524f530cb81d129";
     const url = `https://newsdata.io/api/1/news`;
 
     try {
       const response = await axios.get(url, {
         params: {
           apikey: apiKey, // Your API Key
-          q: "Facebook", // Search query for Facebook-related news
-          country: "PK", // Fetch news for Pakistan
+          q: q, // Search query for Facebook-related news
+          country: country, // Fetch news for Pakistan
           language: "en", // English
         },
       });
-      setNewsData(response.data.results);
-      console.log(newsData);
+      console.log(response.data.results);
+      let res = response.data.results;
+
+
+
+      // const results = [
+      //   {
+      //     article_id: "ae703d1503f64ab60694659050210fbc",
+      //     title: "222222222222222222Deutsche Handballerinnen brauchen Wunder für EM-Halbfinale",
+      //     link: "https://www.wn.de/sport/weltsport/handball/deutsche-handballerinnen-brauchen-wunder-fuer-em-halbfinale-3205835",
+      //     description: "Durch die Niederlage gegen Dänemark haben die deutschen Handballerinnen keine realistische Chance mehr auf das EM-Halbfinale. Theoretisch ist das Ziel aber noch erreichbar.",
+      //     content: "Für die deutschen Handballerinnen wird sich der Traum von der ersten EM-Medaille seit 30 Jahren bei der Endrunde in Österreich mit größter Wahrscheinlichkeit nicht erfüllen...",
+      //     pubDate: "2024-12-08 04:49:10",
+      //     image_url: "https://asc-images.forward-publishing.io/2024/12/08/ab39f5de-5f2b-4a9c-bd69-af617ae202b1.jpeg?auto=compress%2Cformat&rect=0%2C0%2C2048%2C1365&w=1024",
+      //     source_name: "Westfälische Nachrichten",
+      //     source_url: "https://www.wn.de",
+      //     source_icon: "https://i.bytvi.com/domain_icons/wn.png",
+      //     language: "german",
+      //     country: ["germany"],
+      //     category: ["top"],
+      //     ai_tag: ["sports"],
+      //     sentiment: "neutral",
+      //     sentiment_stats: {
+      //       positive: 0.08,
+      //       neutral: 99.81,
+      //       negative: 0.11
+      //     },
+      //     duplicate: false
+      //   },
+      //   {
+      //     article_id: "ae703d1503f64ab60694659050210fbc",
+      //     title: "333333333333333333Deutsche Handballerinnen brauchen Wunder für EM-Halbfinale",
+      //     link: "https://www.wn.de/sport/weltsport/handball/deutsche-handballerinnen-brauchen-wunder-fuer-em-halbfinale-3205835",
+      //     description: "Durch die Niederlage gegen Dänemark haben die deutschen Handballerinnen keine realistische Chance mehr auf das EM-Halbfinale. Theoretisch ist das Ziel aber noch erreichbar.",
+      //     content: "Für die deutschen Handballerinnen wird sich der Traum von der ersten EM-Medaille seit 30 Jahren bei der Endrunde in Österreich mit größter Wahrscheinlichkeit nicht erfüllen...",
+      //     pubDate: "2024-12-08 04:49:10",
+      //     image_url: "https://asc-images.forward-publishing.io/2024/12/08/ab39f5de-5f2b-4a9c-bd69-af617ae202b1.jpeg?auto=compress%2Cformat&rect=0%2C0%2C2048%2C1365&w=1024",
+      //     source_name: "Westfälische Nachrichten",
+      //     source_url: "https://www.wn.de",
+      //     source_icon: "https://i.bytvi.com/domain_icons/wn.png",
+      //     language: "german",
+      //     country: ["germany"],
+      //     category: ["top"],
+      //     ai_tag: ["sports"],
+      //     sentiment: "neutral",
+      //     sentiment_stats: {
+      //       positive: 0.08,
+      //       neutral: 99.81,
+      //       negative: 0.11
+      //     },
+      //     duplicate: false
+      //   },
+      //   // Add more objects for additional news articles
+      // ];
+
+
+
+      setNewsData(prev => [...prev ,res]);
+
+        console.log(newsData);
     } catch (error) {
       console.error("Error fetching the news:", error);
     }
   };
 
   useEffect(() => {
-    getNewsAxios(); // Call the async function to fetch news when component mounts
+    getNewsAxios("Facebook","PK"); // Call the async function to fetch news when component mounts
+    getNewsAxios("Facebook","AE")
+    getNewsAxios("Facebook","US")
   }, []); // Empty array means this will only run once when the component mounts
 
   return (
