@@ -98,7 +98,6 @@ function App() {
       // ];
 
 
-
       setNewsData(prev => [...prev ,res]);
 
         console.log(newsData);
